@@ -20,7 +20,7 @@
                 Console.WriteLine("0: Avsluta");
                 Console.WriteLine("1: Optitech Textsparare");
                 Console.WriteLine("2: Optitech Spelspelare");
-                Console.WriteLine("3: Optitech Väderservice");
+                Console.WriteLine("3: Optitech Skämtservice");
 
                 char input = Console.ReadKey().KeyChar;
                 if (input == '1')
@@ -33,7 +33,7 @@
                 }
                 else if (input == '3')
                 {
-                    programSelections.GetWeather();
+                    await programSelections.GetJokeAsync();
                 }
                 else if (input == '0')
                 {
@@ -60,28 +60,5 @@
             Console.BackgroundColor = ConsoleColor.Red;
             Console.ForegroundColor = ConsoleColor.White;
         }
-    }
-    class ProgramSelections : IProgramSelections
-    {
-        public void GetWeather()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void PlayGame()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void TextSaver()
-        {
-            throw new NotImplementedException();
-        }
-    }
-    interface IProgramSelections
-    {
-        void TextSaver();
-        void PlayGame();
-        void GetWeather();
     }
 }
