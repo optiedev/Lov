@@ -9,9 +9,9 @@
     {
         class JokeResponseModel
         {
-            public string joke { get; set; }
-            public string setup { get; set; }
-            public string delivery { get; set; }
+            public string Joke { get; set; }
+            public string Setup { get; set; }
+            public string Delivery { get; set; }
         }
         public async Task GetJokeAsync()
         {
@@ -22,14 +22,14 @@
                 Console.Clear();
                 using var client = new HttpClient();
                 var response = await client.GetFromJsonAsync<JokeResponseModel>("https://v2.jokeapi.dev/joke/Programming");
-                if (String.IsNullOrWhiteSpace(response.joke))
+                if (String.IsNullOrWhiteSpace(response.Joke))
                 {
-                    Console.WriteLine(response.setup);
-                    Console.WriteLine(response.delivery);
+                    Console.WriteLine(response.Setup);
+                    Console.WriteLine(response.Delivery);
                 }
                 else
                 {
-                    Console.WriteLine(response.joke);
+                    Console.WriteLine(response.Joke);
                 }
 
                 Console.WriteLine();
