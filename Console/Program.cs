@@ -21,6 +21,7 @@
                 Console.WriteLine("1: Optitech Textsparare");
                 Console.WriteLine("2: Optitech Spelspelare");
                 Console.WriteLine("3: Optitech Skämtservice");
+                Console.WriteLine("4");
 
                 char input = Console.ReadKey().KeyChar;
                 if (input == '1')
@@ -34,6 +35,10 @@
                 else if (input == '3')
                 {
                     await programSelections.GetJokeAsync();
+                }
+                else if (input == '4')
+                {
+                    programSelections.ShowWeather();
                 }
                 else if (input == '0')
                 {

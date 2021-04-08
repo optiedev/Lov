@@ -13,6 +13,12 @@
             public string Setup { get; set; }
             public string Delivery { get; set; }
         }
+        class Position
+        {
+            public float Lat { get; set; }
+            public float Lon { get; set; }
+        }
+        class weather { }
         public async Task GetJokeAsync()
         {
 
@@ -50,6 +56,28 @@
         public void TextSaver()
         {
             throw new NotImplementedException();
+        }
+
+        public async void ShowWeather()
+        {
+            bool isRunning = true;
+            while (isRunning)
+            {
+                Console.Clear();
+                using var client = new HttpClient();
+                var response = await client.GetFromJsonAsync<Position>("http://ip-api.com/json/");
+
+                Console.WriteLine(response.Lat);
+                Console.WriteLine(response.Lon);
+
+                String url = $"http://www.7timer.info/bin/api.pl?lon={response.Lon}&lat={response.Lat}&product=civil&output=json";
+                Console.WriteLine(url);
+                var input = Console.ReadKey();
+                if (input.KeyChar == 'N' || input.KeyChar == 'n')
+                {
+                    isRunning = false;
+                }
+            }
         }
     }
 }
