@@ -18,7 +18,14 @@
             public float Lat { get; set; }
             public float Lon { get; set; }
         }
-        class weather { }
+        class weather 
+        {
+            public dataseries[] dataseries { get; set; }
+        }
+        class dataseries
+        {
+            public int temp2m { get; set; }
+        }
         public async Task GetJokeAsync()
         {
 
@@ -58,22 +65,34 @@
             throw new NotImplementedException();
         }
 
-        public async void ShowWeather()
+        public async void ShowLocalWeather()
         {
             bool isRunning = true;
             while (isRunning)
             {
                 Console.Clear();
+                var ip = "";
                 using var client = new HttpClient();
-                var response = await client.GetFromJsonAsync<Position>("http://ip-api.com/json/");
+                var locationResponse = await client.GetFromJsonAsync<Position>("http://ip-api.com/json/"+ip);
 
-                Console.WriteLine(response.Lat);
-                Console.WriteLine(response.Lon);
+                Console.WriteLine("latitud:\t " + locationResponse.Lat);
+                Console.WriteLine("longitud:\t" + locationResponse.Lon);
 
-                String url = $"http://www.7timer.info/bin/api.pl?lon={response.Lon}&lat={response.Lat}&product=civil&output=json";
-                Console.WriteLine(url);
+                string url = $"http://www.7timer.info/bin/api.pl?lon={locationResponse.Lon}&lat={locationResponse.Lat}&product=civil&output=json";
+
+                var weatherResponse = await client.GetFromJsonAsync<weather>(url);
+                var currentWeather = weatherResponse.dataseries[0].temp2m;
+
+                //while (weatherResponse is null)
+                //{
+                //    await Task.Delay(TimeSpan.FromMilliseconds(100));
+                //    Console.Write(".");
+                //}
+
+                Console.WriteLine(currentWeather);
+
                 var input = Console.ReadKey();
-                if (input.KeyChar == 'N' || input.KeyChar == 'n')
+                if (input.KeyChar == '7')
                 {
                     isRunning = false;
                 }

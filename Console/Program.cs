@@ -21,7 +21,7 @@
                 Console.WriteLine("1: Optitech Textsparare");
                 Console.WriteLine("2: Optitech Spelspelare");
                 Console.WriteLine("3: Optitech Skämtservice");
-                Console.WriteLine("4");
+                Console.WriteLine("4: väderservice");
 
                 char input = Console.ReadKey().KeyChar;
                 if (input == '1')
@@ -38,7 +38,7 @@
                 }
                 else if (input == '4')
                 {
-                    programSelections.ShowWeather();
+                    programSelections.ShowLocalWeather();
                 }
                 else if (input == '0')
                 {

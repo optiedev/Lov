@@ -7,6 +7,6 @@ namespace Console
         void TextSaver();
         void PlayGame();
         Task GetJokeAsync();
-        void ShowWeather();
+        void ShowLocalWeather();
     }
 }
