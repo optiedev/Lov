@@ -38,7 +38,7 @@
                 }
                 else if (input == '4')
                 {
-                    programSelections.ShowLocalWeather();
+                    await programSelections.ShowLocalWeather();
                 }
                 else if (input == '0')
                 {

@@ -17,6 +17,7 @@
         {
             public float Lat { get; set; }
             public float Lon { get; set; }
+            public string City { get; set; }
         }
         class weather 
         {
@@ -65,7 +66,7 @@
             throw new NotImplementedException();
         }
 
-        public async void ShowLocalWeather()
+        public async Task ShowLocalWeather()
         {
             bool isRunning = true;
             while (isRunning)
@@ -75,24 +76,29 @@
                 using var client = new HttpClient();
                 var locationResponse = await client.GetFromJsonAsync<Position>("http://ip-api.com/json/"+ip);
 
-                Console.WriteLine("latitud:\t " + locationResponse.Lat);
-                Console.WriteLine("longitud:\t" + locationResponse.Lon);
+                Console.WriteLine("vänta...");
 
                 string url = $"http://www.7timer.info/bin/api.pl?lon={locationResponse.Lon}&lat={locationResponse.Lat}&product=civil&output=json";
 
                 var weatherResponse = await client.GetFromJsonAsync<weather>(url);
-                var currentWeather = weatherResponse.dataseries[0].temp2m;
-
                 //while (weatherResponse is null)
                 //{
                 //    await Task.Delay(TimeSpan.FromMilliseconds(100));
                 //    Console.Write(".");
                 //}
 
-                Console.WriteLine(currentWeather);
+                var currentWeather = weatherResponse.dataseries[0].temp2m;
+                Console.Clear();
+                Console.WriteLine("stad/område:\t" + locationResponse.City);
+                Console.WriteLine("latitud:\t " + locationResponse.Lat);
+                Console.WriteLine("longitud:\t" + locationResponse.Lon);
+                Console.WriteLine("temperatur:\t" + currentWeather);
+                Console.WriteLine("\ntryck e för at komma tillbaks till huvudmenyn");
+
+
 
                 var input = Console.ReadKey();
-                if (input.KeyChar == '7')
+                if (input.KeyChar is 'e' or 'E')
                 {
                     isRunning = false;
                 }
