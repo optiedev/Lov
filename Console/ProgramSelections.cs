@@ -93,8 +93,7 @@
                 Console.WriteLine("latitud:\t " + locationResponse.Lat);
                 Console.WriteLine("longitud:\t" + locationResponse.Lon);
                 Console.WriteLine("temperatur:\t" + currentWeather);
-                Console.WriteLine("\ntryck e för at komma tillbaks till huvudmenyn");
-
+                Console.WriteLine("\ntryck e för at komma tillbaks till huvudmenyn"); 
 
 
                 var input = Console.ReadKey();
@@ -106,3 +105,4 @@
         }
     }
 }
+//i've never used visual studio code 

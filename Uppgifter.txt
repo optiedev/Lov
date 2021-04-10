@@ -1,19 +1,23 @@
-1. skriv om if-satserna i Program.cs till en switch. (där man väljer vad man vill göra) 
-Om man väljer något som inte finns ska den skriva ut Felaktig inmatning... 
+1. skriv om if-satserna i Program.cs till en switch. (dÃ¤r man vÃ¤ljer vad man vill gï¿½ra) 
+Om man vÃ¤ljer nÃ¥got som inte finns ska den skriva ut Felaktig inmatning... 
 
-2. Skapa en ny metod i Programselection.cs och lägg till den i interfacet. Den ska anropa en api med adress:
+2. Skapa en ny metod i Programselection.cs och lÃ¤gg till den i interfacet. Den ska anropa en api med adress:
 http://ip-api.com/json/
 
 till exempel:
 string ip="2.249.91.236";
 string url=$"http://ip-api.com/json/{ip}";
 
-Den kommer returnera ett jsonobjekt som har två properties du behöver använda: "lat" och "lon". osäker på datatyp men skulle tro float
-Du kommer då veta ungefär var en ip-adress befinner sig i latitud och longitud. Den ska du sen använda för att få fram vilket väder som är
-på just den platsen genom ett annat api.
+Den kommer returnera ett jsonobjekt som har tvÃ¥ properties du behÃ¶ver anvÃ¤nda: "lat" och "lon". osÃ¤ker pÃ¥ datatyp men skulle tro float
+Du kommer dÃ¥ veta ungefÃ¤r var en ip-adress befinner sig i latitud och longitud. Den ska du sen anvÃ¤nda fÃ¶r att fÃ¥ fram vilket vÃ¤der som Ã¤r
+pÃ¥ just den platsen genom ett annat api.
 
 http://www.7timer.info/bin/api.pl?lon={lon}&lat={lat}&product=civil&output=json
 
 Find a Location by Coordinates
 If you have already know the geographic coordinates of a location, you may enter them to get forecast. 
 Coordinates must be input as "dd.ddd/-dd.ddd", like "113.190,23.094 or -113.190,-23.094", with precision up to 0.001.
+
+3. Jag vill att du varje gÃ¥ng nÃ¥gon kollat pÃ¥ vÃ¤der lÃ¤ggs latitud longitud stad temperatur och ip in i en xml-fil via en asp.net webapi.
+
+4. NÃ¤r nÃ¥gon vill kolla aktuellt vÃ¤der kommer man fÃ¶rst fÃ¥ ett val om man vill se de 10 senaste hÃ¤mtningarna...
